@@ -10680,6 +10680,8 @@ in
     inherit (darwin.apple_sdk.frameworks) Security;
   });
 
+  esy = callPackage ../development/tools/ocaml/esy { };
+
   apache-flex-sdk = callPackage ../development/compilers/apache-flex-sdk { };
 
   fasm = pkgsi686Linux.callPackage ../development/compilers/fasm {
