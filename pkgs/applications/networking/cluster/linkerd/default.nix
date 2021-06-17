@@ -1,6 +1,6 @@
 { lib, fetchFromGitHub, buildGoModule, installShellFiles }:
 
-let generic = { channel, version, sha256, vendorSha256 }:
+generic = { channel, version, sha256, vendorSha256 }:
   buildGoModule rec {
     pname = "linkerd-${channel}";
     inherit version vendorSha256;
@@ -9,7 +9,7 @@ let generic = { channel, version, sha256, vendorSha256 }:
       owner = "linkerd";
       repo = "linkerd2";
       rev = "${channel}-${version}";
-      inherit sha256;
+             sha256;
     };
 
     subPackages = [ "cli" ];
@@ -54,7 +54,7 @@ let generic = { channel, version, sha256, vendorSha256 }:
       maintainers = with maintainers; [ Gonzih bryanasdev000 superherointj ];
     };
   };
-in
+
   {
     stable = generic {
       channel = "stable";
