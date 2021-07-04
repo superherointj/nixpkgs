@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, buildDunePackage, reason, reason-native, ppxlib, ppx_deriving, ocamlPackages }:
+{ lib, fetchFromGitHub, buildDunePackage, reason, reason-native, ppxlib, ppx_deriving, ocamlPackages, lambdaTerm, brisk-reconciler, callPackage }:
 
 buildDunePackage {
   pname = "brisk-reconciler";
@@ -26,6 +26,12 @@ buildDunePackage {
   ];
   #doCheck = true; # Errors as:
     # The constructor JUnit does not belong to type Rely.RunConfig.reporter
+
+  passthru.tests = {
+    lambda-term = callPackage ./tests/lambda-term {
+      inherit buildDunePackage reason lambdaTerm brisk-reconciler;
+    };
+  };
 
   meta = with lib; {
     description = "An easy way to model any tree-shaped state with simple stateful functions";
