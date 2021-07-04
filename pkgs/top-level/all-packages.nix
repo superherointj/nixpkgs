@@ -26029,6 +26029,8 @@ in
 
   inherit (python3Packages.callPackage ../applications/networking/onionshare { }) onionshare onionshare-gui;
 
+  onivim = callPackage ../applications/editors/onivim { };
+
   openambit = qt5.callPackage ../applications/misc/openambit { };
 
   openbox = callPackage ../applications/window-managers/openbox { };
